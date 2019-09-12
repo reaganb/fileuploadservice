@@ -74,11 +74,6 @@ DB env variable summary:
 **Note**: These env varables are very important to be defined with the proper value before running the container.
 
 After this, it will automatically run the REST API server. It can be reachable to the default http port 80.
-##### Test the connection
-On the local machine
-
-```$ curl localhost:8000/```
-
 
 #### 2. Automated setup for the database
 It is possible to create the database, table, and schema with a few simple commands.
