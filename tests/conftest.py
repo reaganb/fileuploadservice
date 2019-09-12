@@ -14,10 +14,10 @@ def new_file():
     Fixture for creating a new FileMetadata model object
     """
     file = FileMetadata(
-        size='123',
+        size='5242880',
         file_name='new_file',
-        sha1='asdasd123123',
-        md5='asdasd',
+        sha1='ffffffffffffffffffffffffffffffffffffffff',
+        md5='ffffffffffffffffffffffffffffffff',
         type='unknown/unknown',
     )
     return file
