@@ -1,0 +1,136 @@
+swagger: "2.0"
+info:
+  description: The swagger file
+  version: "1.0.0"
+  title: REST API Machine Problem
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /
+
+paths:
+  /:
+    get:
+      operationId: fileupload.views.load_index
+      responses:
+        200:
+          description: Test connection success!
+  /service/fileupload:
+    get:
+      operationId: fileupload.views.read_files
+      summary: Read all files
+      description: Read all files
+      responses:
+        200:
+          description: Read all files success!
+          schema:
+            type: array
+            items:
+              properties:
+                file_size:
+                  type: string
+                file_name:
+                  type: string
+                file_sha1:
+                  type: string
+                file_md5:
+                  type: string
+                file_type:
+                  type: string
+    post:
+      operationId: fileupload.views.upload_file
+      summary: Create a file
+      description: Create a file
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: upfile
+          type: file
+          description: The file to upload
+      responses:
+        201:
+          description: Create file success!
+
+  /service/fileupload/{hash}:
+    get:
+      operationId: fileupload.views.read_file
+      summary: Read one file
+      description: Read one file
+      parameters:
+        - name: hash
+          in: path
+          description: The hash to search
+          type: string
+          required: True
+      responses:
+        200:
+          description: File read success!
+          schema:
+            properties:
+              file_size:
+                type: string
+              file_name:
+                type: string
+              file_sha1:
+                type: string
+              file_md5:
+                type: string
+              file_type:
+                type: string
+
+    put:
+      operationId: fileupload.views.update_file
+      summary: Read one file
+      description: Read one file
+      parameters:
+        - name: hash
+          in: path
+          description: The hash to search
+          type: string
+          required: True
+        - name: file
+          in: body
+          schema:
+            type: object
+            properties:
+              file_name:
+                type: string
+              file_type:
+                type: string
+      responses:
+        200:
+          description: File read success!
+          schema:
+            properties:
+              file_size:
+                type: string
+              file_name:
+                type: string
+              file_sha1:
+                type: string
+              file_md5:
+                type: string
+              file_type:
+                type: string
+
+    delete:
+      operationId: fileupload.views.delete_file
+      summary: Read one file
+      description: Read one file
+      parameters:
+        - name: hash
+          in: path
+          description: The hash to search
+          type: string
+          required: True
+      responses:
+        200:
+          description: File delete success!
+
+
+
+
+
