@@ -54,13 +54,13 @@ paths:
         201:
           description: Create file success!
 
-  /service/fileupload/{hash}:
+  /service/fileupload/{file_hash}:
     get:
       operationId: fileupload.views.read_file
       summary: Read one file
       description: Read one file
       parameters:
-        - name: hash
+        - name: file_hash
           in: path
           description: The hash to search
           type: string
@@ -86,7 +86,7 @@ paths:
       summary: Read one file
       description: Read one file
       parameters:
-        - name: hash
+        - name: file_hash
           in: path
           description: The hash to search
           type: string
@@ -121,7 +121,7 @@ paths:
       summary: Read one file
       description: Read one file
       parameters:
-        - name: hash
+        - name: file_hash
           in: path
           description: The hash to search
           type: string
