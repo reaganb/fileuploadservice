@@ -56,6 +56,8 @@ $ docker container run -d -p 80:8000 \
 --env DB_HOST="<ip_address_or_domain>" \
 --env DB_PORT=5432 \
 --env DB_NAME="<database_name>" \
+-v log-volume:/server/logs \
+-v data-volume:/server/data
 ```
 DB env variable summary:
 
