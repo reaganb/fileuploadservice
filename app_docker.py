@@ -1,3 +1,7 @@
+"""
+The script to be located by the gunicorn production server
+"""
+
 from flask_migrate import Migrate
 from app.config import db, connex_app
 

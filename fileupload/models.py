@@ -1,6 +1,14 @@
+"""
+The Database tables are described here by using a Model together
+with its Model schema.
+"""
+
 from app.config import ma, db
 
 class FileMetadata(db.Model):
+    """
+    The FileMetaData table
+    """
 
     __tablename__ = "filemetadata"
     __table_args__ = {"schema": "filemetadata"}
@@ -14,8 +22,9 @@ class FileMetadata(db.Model):
 
 class FileMetadataSchema(ma.ModelSchema):
     """
-    The schema for the module log table
+    The schema for the FileMetadata table
     """
+
     class Meta:
         model = FileMetadata
         sqla_session = db.session

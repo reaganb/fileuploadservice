@@ -1,3 +1,16 @@
+"""
+The script to be executed to apply DB migrations.
+
+Examples:
+
+$ python migrate.py db migrate
+-- Make migrations
+
+$ python migrate.py db upgrade
+-- Apply migrations
+
+"""
+
 from flask_migrate import MigrateCommand, Migrate
 from flask_script import Manager
 from app import create_app, create_db

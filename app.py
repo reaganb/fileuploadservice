@@ -1,3 +1,7 @@
+"""
+The script to be executed using flask as the development server
+"""
+
 from flask_migrate import Migrate
 from app.config import db, connex_app
 
@@ -7,4 +11,3 @@ connex_app.add_api("swagger.yml")
 
 if __name__ == "__main__":
     connex_app.run(debug=True)
-    

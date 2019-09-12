@@ -1,10 +1,18 @@
+"""
+Configurations for the testing framework.
+"""
+
 import pytest
 from app import create_app
 from flask_sqlalchemy import SQLAlchemy
 from fileupload.models import FileMetadata
 
+
 @pytest.fixture(scope='module')
 def new_file():
+    """
+    Fixture for creating a new FileMetadata model object
+    """
     file = FileMetadata(
         size='123',
         file_name='new_file',
@@ -15,14 +23,10 @@ def new_file():
     return file
 
 @pytest.fixture(scope='module')
-def new_db():
-    flask_app = create_app()
-    flask_app.add_api("swagger.yml")
-    new_db = SQLAlchemy(flask_app.app)
-    return new_db
-
-@pytest.fixture(scope='module')
 def test_client():
+    """
+    Fixture for creating a new Flask test_client object
+    """
     flask_app = create_app()
     flask_app.add_api("swagger.yml")
 

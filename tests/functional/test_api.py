@@ -1,3 +1,7 @@
+"""
+The testing functions to be executed sequentially to perform integration testing of the API server request methods
+"""
+
 import io
 import hashlib
 import json
@@ -16,18 +20,19 @@ FILE_HASH = hashlib.md5(FILE_CONTENT).hexdigest()
 
 
 def test_home_page(test_client):
+    """
+    Testing the home page
+    """
     response = test_client.get('/')
     assert response.status_code == 200
 
 
 def test_upload(test_client):
-
+    """
+    Testing the POST request method
+    """
     data = {
-        "upfile": (io.BytesIO(
-            # b"testingtesting"
-            # b"testingtesting1"
-            FILE_CONTENT
-        ), 'testing.jpg')
+        "upfile": (io.BytesIO(FILE_CONTENT), 'testing.jpg')
     }
 
     response = test_client.post(
@@ -39,17 +44,29 @@ def test_upload(test_client):
 
     assert response.status_code == 201
 
-def test_get_files(test_client):
-    response = test_client.get('/service/fileupload')
 
+def test_get_files(test_client):
+    """
+    Testing the GET request method, for sequence type response
+    """
+
+    response = test_client.get('/service/fileupload')
     assert response.status_code == 200
+
 
 def test_get_file(test_client):
-    response = test_client.get(f'/service/fileupload/{FILE_HASH}')
+    """
+    Testing the GET request method, for single object type response
+    """
 
+    response = test_client.get(f'/service/fileupload/{FILE_HASH}')
     assert response.status_code == 200
 
+
 def test_update(test_client):
+    """
+    Testing the PUT request method
+    """
 
     file = {
             "file_name": "new_file",
@@ -59,13 +76,16 @@ def test_update(test_client):
     response = test_client.put(
         f'/service/fileupload/{FILE_HASH}',
         data=json.dumps(file),
-        headers={'content-type':'application/json'}
+        headers={'content-type' : 'application/json'}
     )
 
     assert response.status_code == 201
 
-def test_delete(test_client):
 
+def test_delete(test_client):
+    """
+    Testing the DEL request method
+    """
     response = test_client.delete(
         f'/service/fileupload/{FILE_HASH}',
     )
