@@ -56,6 +56,8 @@ $ docker container run -d -p 80:8000 \
 --env DB_HOST="<ip_address_or_domain>" \
 --env DB_PORT=5432 \
 --env DB_NAME="<database_name>" \
+-v log-volume:/server/logs \
+-v data-volume:/server/data
 ```
 DB env variable summary:
 
@@ -74,11 +76,6 @@ DB env variable summary:
 **Note**: These env varables are very important to be defined with the proper value before running the container.
 
 After this, it will automatically run the REST API server. It can be reachable to the default http port 80.
-##### Test the connection
-On the local machine
-
-```$ curl localhost:8000/```
-
 
 #### 2. Automated setup for the database
 It is possible to create the database, table, and schema with a few simple commands.
