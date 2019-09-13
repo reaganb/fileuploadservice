@@ -52,12 +52,6 @@ def create_db():
     return -- The database engine connection from sqlalchemy
     """
 
-    if os.path.exists(DATA_DIR):
-        shutil.rmtree(DATA_DIR)
-        os.mkdir(DATA_DIR)
-    else:
-        os.mkdir(DATA_DIR)
-
     if database_exists(DB_URI):
         engine = create_engine(DB_URI)
         conn = engine.connect()
