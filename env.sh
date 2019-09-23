@@ -3,7 +3,7 @@
 export DB_PORT="5432"
 export DB_TYPE="postgresql"
 export DB_USER="postgres"
-export DB_HOST="10.0.2.2"
+export DB_HOST="192.168.81.1"
 export DB_PASSWORD="nopassword"
 export DB_NAME="fileservice_db"
 

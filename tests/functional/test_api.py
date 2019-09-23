@@ -91,6 +91,3 @@ def test_delete(test_client):
     )
 
     assert response.status_code == 201
-
-
-
